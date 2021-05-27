@@ -5,5 +5,6 @@
     <TestDuration Test="TestTables.TesrOrdered" Duration="1" />
     <TestDuration Test="TestTables.TesrHashTab" Duration="1" />
     <TestDuration Test="TestTables.TesrUnordered" Duration="1" />
+    <TestDuration Test="TestTables.TestAVL" Duration="1" />
   </TestDurations>
 </GtaTestDurations>

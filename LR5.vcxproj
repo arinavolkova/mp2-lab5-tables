@@ -143,6 +143,7 @@
     <ClCompile Include="LR5.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AVL.h" />
     <ClInclude Include="disordered.h" />
     <ClInclude Include="hash_table\HashTable.h" />
     <ClInclude Include="Ordered.h" />

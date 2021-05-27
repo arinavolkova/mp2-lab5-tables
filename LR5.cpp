@@ -2,63 +2,89 @@
 #include <iostream>
 #include "disordered.h"
 #include "Ordered.h"
+#include "Wraper.h"
 #include "hash_table/HashTable.h"
+#include <string>
+
+using namespace std;
 
 int main()
 {
-	unordered<int> d = unordered<int>();
-	Ordered<int,int> o = Ordered<int,int>();
-	HashTable h = HashTable(5);
+	Wraper<int> w = Wraper<int>(10);
 
-	h.insert(0,0);
-	h.insert(1,1);
-	h.insert(2,2);
-	h.insert(3,3);
-	h.insert(4,4);
+	bool ext = false;
+	string s_cmd;
+	string key;
+	string value;
+	int cmd;
+	int k,v;
 
-	h.search(0);
-	h.search(1);
-	h.search(2);
-	h.search(3);
-	h.search(4);
+	while (!ext)
+	{	
+		k = -1;
+		v = -1;
+		s_cmd = "";
+		cout << "\nEnter command: ";
+		std::getline(cin, s_cmd);
+		cmd = -1;
+		if (s_cmd == "add") {
 
+			cmd = 1;
+		}
 
-	o.add(0, 0);
-	o.add(4, 4);
-	o.add(3, 3);
-	o.add(1, 1);
-	o.add(4, 6);
-	o.add(2, 2);
+		if (s_cmd == "set_quan") {
+			cmd = 2;
+		}
 
-	o.find(0);
-	o.find(1);
-	o.find(2);
-	o.find(3);
-	o.find(4);
+		if (s_cmd == "delete") {
+			cmd = 4;
+		}
 
-	o.remove(4);
-	o.remove(0);
-	o.remove(2);
+		if (s_cmd == "find") {
+			cmd = 3;
+		}
 
-	o.cprint();
+		if (s_cmd == "ext") {
+			ext = true;
+			cmd = -1;
+		}
+		
 
-	d.add(0, 0);
-	d.add(1, 1);
-	d.add(2, 2);
-	d.add(3, 3);
-	d.add(4, 4);
-	d.add(4, 6);
+		switch (cmd)
+		{
+		case 1:
+			cout << "\nInsert key: ";
+			std::getline(cin, key);
+			cout << "\nInsert value: ";
+			std::getline(cin, value);
+			k = atoi(key.c_str());
+			v = atoi(value.c_str());
+			w.add(k, v);
+			break;
 
+		case 2:
+			cout << "\nInsert new Length: ";
+			std::getline(cin, key);
+			k = atoi(key.c_str());
+			w = Wraper<int>(k);
+			break;
 
-	d.remove(4);
-	d.remove(0);
-	d.remove(2);
-	
-	d.find(1);
-	d.find(3);
+		case 3:
+			cout << "\nInsert key: ";
+			std::getline(cin, key);
+			k = atoi(key.c_str());
+			cout<<w.find(k);
+			break;
+			
+		case 4:
+			cout << "\nInsert key: ";
+			std::getline(cin, key);
+			k = atoi(key.c_str());
+			w.remove(k);
+			break;
 
-	d[1];
-	d[3];
-
-	d.cprint();
+		default:
+			break;
+		}
+	}
 }

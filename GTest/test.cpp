@@ -2,6 +2,7 @@
 #include "../disordered.h"
 #include "../Ordered.h"
 #include "../hash_table/HashTable.h"
+#include "../AVL.h"
 #include "../hash_table/HashTable.cpp"
 
 TEST(TestTables, TesrOrdered) {
@@ -32,7 +33,7 @@ TEST(TestTables, TesrOrdered) {
 }
 TEST(TestTables, TesrHashTab) {
 
-	HashTable h = HashTable(5);
+	HashTable<int> h = HashTable<int>(5);
 
 	h.insert(0, 12);
 	h.insert(1, 144);
@@ -62,6 +63,7 @@ TEST(TestTables, TesrHashTab) {
 	EXPECT_EQ(h.search(4), nullptr);
 
 }
+
 TEST(TestTables, TesrUnordered) {
 
 	unordered<int> d = unordered<int>();
@@ -88,4 +90,27 @@ TEST(TestTables, TesrUnordered) {
 	EXPECT_EQ(d.find(2).data, int());
 
 	//d.cprint();
+}
+
+TEST(TestTables, TestAVL) {
+	AVL<int>* a = new AVL<int>();
+
+	a = a->insert(a, 0, 0);
+	a = a->insert(a, 1, 1);
+	a = a->insert(a, 2, 2);
+	a = a->insert(a, 3, 3);
+	a = a->insert(a, 4, 4);
+	a = a->insert(a, 4, 6);
+
+	EXPECT_EQ(a->getHeight(a), 3);
+	
+	EXPECT_EQ(a->find(a, 1), 1);
+	EXPECT_EQ(a->find(a, 2), 2);
+
+
+	a = a->deleteNode(a, 1);
+	a = a->deleteNode(a, 0);
+
+	EXPECT_EQ(a->find(a, 0), int());
+	EXPECT_EQ(a->find(a, 1), int());
 }

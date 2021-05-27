@@ -1,5 +1,5 @@
 // DataItem methods
-#include "HashTable.h"
+/*#include "HashTable.h"
 
 // DataItem methods
 DataItem::DataItem(int key, int data) {
@@ -130,4 +130,4 @@ void HashTable::display() {
     }
 
     printf("\n");
-}
+}*/
